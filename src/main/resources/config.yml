@@ -3,11 +3,12 @@ prefix:
   development: '&b&l[DEV]&r'
   report: '&c&l[REPORT]&r'
   vote: '&7&l[&9&lVOTE&7&l]&r'
+  staffchat: '&8&l[&c&lSC&8]&r'
 database:
   host: "localhost"
   database: "zander"
   username: "root"
-  password: "password"
+  password: "root"
 discord:
   prefix: '!'
   token: "token"

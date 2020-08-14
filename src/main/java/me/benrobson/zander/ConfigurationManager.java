@@ -66,16 +66,14 @@ public class ConfigurationManager {
 //    private static Configuration motd;
 //    public static Configuration initMotd() {
 //        File dataFolder = plugin.getDataFolder();
-//        if (!dataFolder.exists()) if (!dataFolder.mkdirs()) plugin.getLogger().info("Failed to create configuration folder.");
-//
-//        File configFile = new File(dataFolder, "motd.yml");
-//        if (!configFile.exists()) {
+//        File motdFile = new File(dataFolder, "motd.yml");
+//        if (!motdFile.exists()) {
 //            try {
-//                if (!configFile.createNewFile()) {
+//                if (!motdFile.createNewFile()) {
 //                    plugin.getLogger().info("Unable to create configuration folder.");
 //                }
 //                InputStream in = plugin.getClass().getClassLoader().getResourceAsStream("motd.yml");
-//                FileOutputStream ou = new FileOutputStream(configFile);
+//                FileOutputStream ou = new FileOutputStream(motdFile);
 //
 //                ByteStreams.copy(in, ou);
 //                ou.close();
@@ -87,13 +85,13 @@ public class ConfigurationManager {
 //
 //        try {
 //            ConfigurationProvider provider = ConfigurationProvider.getProvider(YamlConfiguration.class);
-//            config = provider.load(new File(dataFolder, "motd.yml"));
-//            provider.save(config, new File(dataFolder, "motd.yml"));
+//            motd = provider.load(new File(dataFolder, "motd.yml"));
+//            provider.save(motd, new File(dataFolder, "motd.yml"));
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
 //
-//        return config;
+//        return motd;
 //    }
 //
 //    public static Configuration getMotd() {

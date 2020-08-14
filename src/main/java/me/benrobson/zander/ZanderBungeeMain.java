@@ -1,6 +1,7 @@
 package me.benrobson.zander;
 
 import me.benrobson.zander.commands.*;
+import me.benrobson.zander.commands.moderation.staffchat;
 import me.benrobson.zander.commands.servers.*;
 import me.benrobson.zander.discord.DiscordMain;
 import me.benrobson.zander.events.*;
@@ -63,7 +64,7 @@ public class ZanderBungeeMain extends Plugin implements Listener {
         // Event Registry
         getProxy().getPluginManager().registerListener(this, new PlayerOnJoin());
         getProxy().getPluginManager().registerListener(this, new PlayerOnDisconnect());
-        getProxy().getPluginManager().registerListener(this, new PlayerOnVote());
+//        getProxy().getPluginManager().registerListener(this, new PlayerOnVote());
         getProxy().getPluginManager().registerListener(this, new ServerListPing());
         getProxy().getPluginManager().registerListener(this, new PlayerOnServerConnect());
         getProxy().getPluginManager().registerListener(this, new TabListListener());
@@ -71,6 +72,11 @@ public class ZanderBungeeMain extends Plugin implements Listener {
         // Discord Registry
         DiscordMain DiscordMain = new DiscordMain(this);
         AnnouncementManager.schedule(this);
+
+
+        staffchat staffchat = new staffchat(this);
+        getProxy().getPluginManager().registerCommand(this, new staffchat(this));
+        getProxy().getPluginManager().registerListener(this, staffchat);
     }
 
     @Override

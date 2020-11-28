@@ -26,25 +26,29 @@ public class link extends Command {
                 player.sendMessage(new TextComponent(ChatColor.RED + "Please provide a link code."));
                 return;
             } else {
-                //
-                // Database Query
-                // Check if the player can be verified.
-                //
                 try {
-                    PreparedStatement findstatement = plugin.getConnection().prepareStatement("SELECT * FROM webaccounts where playerid = (select id from playerdata where username='?') AND registered = false;");
-                    findstatement.setString(1, player.getName());
-                    ResultSet results = findstatement.executeQuery();
+                    //
+                    // Database Query
+                    // Check if the player can be verified.
+                    //
+                    try {
+                        PreparedStatement findstatement = plugin.getConnection().prepareStatement("SELECT * FROM webaccounts where playerid = (select id from playerdata where username='?') AND registered = false;");
+                        findstatement.setString(1, player.getName());
+                        ResultSet results = findstatement.executeQuery();
 
-                    System.out.println(findstatement);
-                    System.out.println(results);
+                        System.out.println(findstatement);
+                        System.out.println(results);
 
-                    if (results.next()) {
-                        player.sendMessage(new TextComponent(ChatColor.RED + "The results are in!"));
-                    } else {
-                        player.sendMessage(new TextComponent(ChatColor.RED + "The results are out!"));
+                        if (results.next()) {
+                            player.sendMessage(new TextComponent(ChatColor.RED + "The results are in!"));
+                        } else {
+                            player.sendMessage(new TextComponent(ChatColor.RED + "The results are out!"));
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
                     }
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    player.sendMessage(new TextComponent(ChatColor.RED + "You have not started registering."));
                 }
             }
             return;

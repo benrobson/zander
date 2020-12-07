@@ -26,7 +26,7 @@ public class ChatEvent extends ListenerAdapter {
             if(bannedshouldBreak) break;
             for (String badWord : bannedWords) {
                 if (event.getMessage().getAuthor().isBot()) return;
-                if (word.toLowerCase().contains(badWord.toLowerCase())) {
+                if (word.toLowerCase().equals(badWord.toLowerCase())) {
                     event.getMessage().delete().queue();
 
                     System.out.println(badWord + " is a banned word.");
@@ -55,7 +55,6 @@ public class ChatEvent extends ListenerAdapter {
                 if (event.getMessage().getAuthor().isBot()) return;
                 if (word.toLowerCase().contains(filterLink.toLowerCase())) {
                     if (word.toLowerCase().contains(plugin.configurationManager.getConfig().getString("web.siteaddress"))) return;
-
                     event.getMessage().delete().queue();
 
                     System.out.println(filterLink + " is a part of or is an advertising link.");

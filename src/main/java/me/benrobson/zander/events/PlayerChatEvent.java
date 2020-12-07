@@ -27,21 +27,17 @@ public class PlayerChatEvent implements Listener {
 
         boolean bannedshouldBreak = false;
         for (String word : words) {
-            if(bannedshouldBreak) break;
+            if (bannedshouldBreak) break;
             for (String badWord : bannedWords) {
-
-                if (word.toLowerCase().contains(badWord.toLowerCase())) {
+                if (word.toLowerCase().equals(badWord.toLowerCase())) {
                     event.setCancelled(true);
                     player.sendMessage(new TextComponent(ChatColor.RED + "You are not allowed to swear on this Server."));
-
                     System.out.println(badWord + " is a banned word.");
-
                     bannedshouldBreak = true;
                     break;
                 }
             }
         }
-
 
         //
         // Link Filter

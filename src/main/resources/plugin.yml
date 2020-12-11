@@ -1,4 +1,4 @@
-main: me.benrobson.zander.ZanderBungeeMain
+main: net.craftingforchrist.zander.ZanderBungeeMain
 name: zander
 version: 2.0
 author: Ben Robson

@@ -18,8 +18,8 @@ public class ServerListPing implements Listener {
         ServerPing ping = event.getResponse();
         Random random = new Random();
 
-        int get = random.nextInt(plugin.configurationManager.getConfig().getInt("motd.max"));
-        String motd = ChatColor.translateAlternateColorCodes('&', plugin.configurationManager.getConfig().getString("motd." + get));
+        int get = random.nextInt(plugin.configurationManager.getMotd().getInt("motd.max"));
+        String motd = ChatColor.translateAlternateColorCodes('&', plugin.configurationManager.getMotd().getString("motd." + get));
         ping.setDescription(motd);
         event.setResponse(ping);
     }

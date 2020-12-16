@@ -1,0 +1,12 @@
+announcement:
+  interval: 20
+  max: 8
+  0: "Join our &6Forums!&r Stay in touch with the community in conversation and don't miss the Server announcements. &6https://craftingforchrist.net/forums"
+  1: "Join our &9Discord!&r Talk to a community of awesome people! Stay informed about announcements and events. &9https://craftingforchrist.net/discord"
+  2: "If you see something, say something! Report bugs & issues to our issue tracker: &chttps://craftingforchrist.net/issues"
+  3: "Interested in becoming a Staff Member? Applications are open: &dhttps://craftingforchrist.net/apply/juniorstaff"
+  4: "We're looking for talented Builders to join our team! Have you got the stuff? Know the craft, apply! &9https://craftingforchrist.net/apply/builder"
+  5: "We're looking for Developers to help make our server bug free. If you're a Developer, apply here! &9https://craftingforchrist.net/apply/developer"
+  6: "Help out Crafting For Christ by voting on Minecraft Server lists: &3https://craftingforchrist.net/vote"
+  7: "Did you know that we support &l&7Bedrock&r? Get your mobile and console friends on using &8bedrock.craftingforchrist.net"
+  8: "Want to support our Server and also get cool perks? Consider buying a rank! &3https://craftingforchrist.net/ranks"

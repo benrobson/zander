@@ -1,0 +1,8 @@
+database:
+  host: "localhost"
+  port: "3306"
+  database: "zander"
+  username: "root"
+  password: "password"
+  useSSL: "true"
+  autoReconnect: "true"

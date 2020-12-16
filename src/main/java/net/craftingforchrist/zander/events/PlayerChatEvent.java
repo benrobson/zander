@@ -23,7 +23,7 @@ public class PlayerChatEvent implements Listener {
         //
         // Swear Filter
         //
-        List<String> bannedWords = plugin.configurationManager.getConfig().getStringList("bannedWords");
+        List<String> bannedWords = plugin.configurationManager.getFilter().getStringList("bannedWords");
 
         boolean bannedshouldBreak = false;
         for (String word : words) {
@@ -42,7 +42,7 @@ public class PlayerChatEvent implements Listener {
         //
         // Link Filter
         //
-        List<String> filteredLinks = plugin.configurationManager.getConfig().getStringList("filteredLinks");
+        List<String> filteredLinks = plugin.configurationManager.getFilter().getStringList("filteredLinks");
 
         boolean linksshouldBreak = false;
         for (String word : words) {

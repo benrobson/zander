@@ -18,11 +18,11 @@ public class link extends Command {
     private static ZanderBungeeMain plugin;
 
     @Override
-    public void execute(CommandSender commandSender, String[] strings) {
+    public void execute(CommandSender commandSender, String[] args) {
         if (commandSender instanceof ProxiedPlayer) {
             ProxiedPlayer player = (ProxiedPlayer) commandSender;
 
-            if (strings.length == 0) {
+            if (args.length == 0) {
                 player.sendMessage(new TextComponent(ChatColor.RED + "Please provide a link code."));
                 return;
             } else {
@@ -31,19 +31,36 @@ public class link extends Command {
                 // Check if the player can be verified.
                 //
                 try {
-                    PreparedStatement findstatement = plugin.getConnection().prepareStatement("SELECT * FROM webaccounts;");
+                    PreparedStatement findstatement = plugin.getInstance().getConnection().prepareStatement("SELECT * FROM webaccounts where playerid = (select id from playerdata where username=?) AND registered = false;");
                     findstatement.setString(1, player.getDisplayName());
                     ResultSet results = findstatement.executeQuery();
                     if (results.next()) {
-                        player.sendMessage(new TextComponent("This works."));
+                        String registrationtoken = results.getString("registrationtoken");
+
+                        if (args[0].equals(registrationtoken)) {
+                            //
+                            // Database Query
+                            // Update the registration as successful and linked.
+                            //
+                            try {
+                                PreparedStatement linkverifydonestatement = plugin.getInstance().getConnection().prepareStatement("UPDATE webaccounts SET registered=1 WHERE playerid = (select id from playerdata where username=?);");
+                                linkverifydonestatement.setString(1, player.getDisplayName());
+                                linkverifydonestatement.executeUpdate();
+                                player.sendMessage(new TextComponent(ChatColor.GREEN.toString() + ChatColor.BOLD + "You are now registered as " + ChatColor.YELLOW + ChatColor.BOLD + player.getDisplayName()));
+                            } catch (SQLException e) {
+                                e.getMessage();
+                            }
+                        } else {
+                            player.sendMessage(new TextComponent(ChatColor.RED + "This token is incorrect. Please check the registration email and try again."));
+                        }
+                    } else {
+                        player.sendMessage(new TextComponent(ChatColor.RED + "You are already registered or have not started registering."));
                     }
                 } catch (SQLException e) {
                     e.getMessage();
                 }
             }
             return;
-
-//            SELECT * FROM webaccounts where playerid = (select id from playerdata where username=?) AND registered = false;
         }
     }
 }

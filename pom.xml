@@ -130,6 +130,7 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Joda Time -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -143,6 +144,13 @@
             <version>2.3.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/AdvancedBan-Bundle-2.3.0-RELEASE.jar</systemPath>
+        </dependency>
+
+        <!-- LuckPerms -->
+        <dependency>
+            <groupId>me.lucko.luckperms</groupId>
+            <artifactId>luckperms-api</artifactId>
+            <version>4.0</version>
         </dependency>
     </dependencies>
 </project>

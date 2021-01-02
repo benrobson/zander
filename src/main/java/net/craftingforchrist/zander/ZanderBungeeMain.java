@@ -1,15 +1,11 @@
 package net.craftingforchrist.zander;
 
-import me.lucko.luckperms.LuckPerms;
-import me.lucko.luckperms.api.LuckPermsApi;
-import me.lucko.luckperms.api.User;
 import net.craftingforchrist.zander.commands.*;
 import net.craftingforchrist.zander.commands.servers.*;
 import net.craftingforchrist.zander.discord.DiscordMain;
 import net.craftingforchrist.zander.events.*;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -22,13 +18,6 @@ public class ZanderBungeeMain extends Plugin implements Listener {
     private static ZanderBungeeMain plugin;
     public static ConfigurationManager configurationManager;
     private Connection connection;
-
-    LuckPermsApi api = LuckPerms.getApi();
-
-    public boolean hasPermission(ProxiedPlayer player, String permission) {
-        User user = LuckPerms.getApi().getUser(player.getUniqueId());
-        return user.getCachedData().getPermissionData().checkPermission(permission).asBoolean();
-    }
 
     @Override
     public void onEnable() {
@@ -62,6 +51,7 @@ public class ZanderBungeeMain extends Plugin implements Listener {
         getProxy().getPluginManager().registerCommand(this, new website());
         getProxy().getPluginManager().registerCommand(this, new seen());
         getProxy().getPluginManager().registerCommand(this, new playtime());
+        getProxy().getPluginManager().registerCommand(this, new permission());
 
             // Servers
             getProxy().getPluginManager().registerCommand(this, new hub());

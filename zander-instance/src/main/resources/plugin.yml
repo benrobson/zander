@@ -4,3 +4,12 @@ description: An instance used for multiple commands and events on Servers.
 version: ${project.version}
 author: Crafting For Christ, Ben Robson
 api-version: 1.16
+
+commands:
+  freeze:
+    description: Freeze a player.
+    usage: /freeze [player]
+
+permissions:
+  zander.freeze:
+    default: op
